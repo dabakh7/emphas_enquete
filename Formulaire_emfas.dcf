@@ -44,10 +44,10 @@ Len=8
 DataType=Alpha
 
 [Record]
-Label=OPERATION COLLECTE
-Name=FORMULAIRE_EMFAS_REC
+Label=IDENTIFICATION
+Name=IDENTIFICATION_REC
 RecordTypeValue='1'
-RecordLen=840
+RecordLen=1015
 
 [Item]
 Label=uuid structure
@@ -790,9 +790,8 @@ DataType=Numeric
 [ValueSet]
 Label=Num Tel CM ou Répondant
 Name=NUM_TEL_VS1
-Value=0:999999999;h
-Value=0
-Name=MISSING,Special
+Value=100:999999999
+Value=99;Ne sait pas
 
 [Item]
 Label=Date début de l'interview (jj/mm/aa)
@@ -905,57 +904,9 @@ Value=1;Oui, sauter
 Value=2;Non, continuer
 
 [Item]
-Label=enqueteur:
-Name=O1
-Start=817
-Len=1
-DataType=Alpha
-
-[Item]
-Label=N° Questionnaire
-Name=O2
-Start=818
-Len=3
-DataType=Numeric
-
-[Item]
-Label=Contrôleur:
-Name=O3
-Start=821
-Len=2
-DataType=Alpha
-
-[Item]
-Label=Date de l'enquête(jj/mm/aaaa)
-Name=O4
-Start=823
-Len=10
-DataType=Numeric
-
-[Item]
-Label=Heure début de l'interview (hh/mm)
-Name=O5
-Start=833
-Len=4
-DataType=Numeric
-
-[Item]
-Label=Heure fin de l'interview (hh/mm)
-Name=O6
-Start=837
-Len=4
-DataType=Numeric
-
-[Record]
-Label=IDENTIFICATION DE L'UNITE
-Name=IDENTIFICATION
-RecordTypeValue='2'
-RecordLen=49
-
-[Item]
 Label=A.1-Région
 Name=A1
-Start=30
+Start=817
 Len=2
 DataType=Alpha
 
@@ -980,7 +931,7 @@ Value=14;SEDHIOU
 [Item]
 Label=A.2-Département
 Name=A2
-Start=32
+Start=819
 Len=3
 DataType=Alpha
 
@@ -1038,7 +989,7 @@ Value=999;Ne sait pas
 [Item]
 Label=A.3-Commune
 Name=A3
-Start=35
+Start=822
 Len=8
 DataType=Alpha
 
@@ -1604,72 +1555,67 @@ Value=88888888;A l'étranger
 [Item]
 Label=A.4-Adresse complète de l'unité
 Name=A4
-Start=43
-Len=1
+Start=830
+Len=50
 DataType=Alpha
 
 [Item]
-Label=A.5-Relevé GPS de l'unité
+Label=A.5-Prénom et Nom du répondant:
 Name=A5
-Start=44
-Len=1
+Start=880
+Len=25
 DataType=Alpha
 
-[ValueSet]
-Label=A.5-Relevé GPS de l'unité
-Name=A5_VS1
-Value=1;Capter le signal GPS
-
-[ValueSet]
-Label=Signal GPS
-Name=A5_VS2
-Value=3;Capter le signal GPS à nouveau
-Value=4;Continuer sans capter le GPS
-
 [Item]
-Label=A.6-Prénom et Nom du propriétaire/responsable moral
+Label=A.6-Fonction/Qualité du répondant
 Name=A6
-Start=45
-Len=1
-DataType=Alpha
-
-[Item]
-Label=A.7-Adresse complète du propriétaire/responsable moral
-Name=A7
-Start=46
-Len=1
-DataType=Alpha
-
-[Item]
-Label=A.8-Prénom et Nom du répondant:
-Name=A8
-Start=47
-Len=1
-DataType=Alpha
-
-[Item]
-Label=A.9-Fonction/Qualité du répondant
-Name=A9
-Start=48
-Len=1
+Start=905
+Len=2
 DataType=Numeric
 
 [ValueSet]
-Label=A.9-Fonction/Qualité du répondant
-Name=A9_VS1
+Label=A.6-Fonction/Qualité du répondant
+Name=A6_VS1
 Value=1;Proprétaire
 Value=2;Responsable moral
 Value=3;Gérant
 Value=4;Associé
 Value=5;Comptable/Trésorier
-Value=6;Autres à préciser
+Value=99;Autres à préciser
 
 [Item]
-Label=A.10 -Numéro de téléphone du Répondant
-Name=A10
-Start=49
-Len=1
+Label=A.6 Préciser la fonction
+Name=A9_99
+Start=907
+Len=25
+DataType=Alpha
+
+[Item]
+Label=A.7 -Numéro de téléphone du Répondant
+Name=A7
+Start=932
+Len=9
 DataType=Numeric
+
+[ValueSet]
+Label=A.7 -Numéro de téléphone du Répondant
+Name=A7_VS1
+Value=100:999999999
+Value=99;Ne sait pas
+
+[Item]
+Label=A.8-Prénom et Nom du propriétaire/responsable moral
+Name=A8
+Start=941
+Len=25
+DataType=Alpha
+
+[Item]
+Label=A.9-Adresse complète du propriétaire/responsable moral
+Name=A9
+Start=966
+Len=50
+DataType=Alpha
 
 [Record]
 Label=CARACTERISTIQUES DE L'UNITE
@@ -2156,8 +2102,8 @@ Value=73;Fédération
 Value=99;Autres à préciser
 
 [Item]
-Label=B.6.2.1_PRECISER - Préciser la première organisation la plus importante
-Name=B_6_2_1_PRECISER
+Label=B.6.2.1_PRECISER - Préciser le type de la première organisation
+Name=B_6_2_1_TYPE_99
 Start=400
 Len=50
 DataType=Alpha
@@ -2186,8 +2132,8 @@ Value=73;Fédération
 Value=99;Autres à préciser
 
 [Item]
-Label=B.6.2.2_PRECISER - Préciser la deuxième organisation la plus importante
-Name=B_6_2_2_PRECISER
+Label=B.6.2.2_PRECISER - Préciser le type de la deuxième organisation
+Name=B_6_2_2_TYPE_99
 Start=502
 Len=50
 DataType=Alpha
@@ -2243,449 +2189,60 @@ Value=3;Comptabilité non formelle (utilisation de carnets, Excel)
 Label=PRODUCTION ET VENTE
 Name=SECTION_C_PRODUCT_VENTE
 RecordTypeValue='4'
-RecordLen=203
-
-[Item]
-Label=C.1.1.1 - Production en 2021
-Name=C1_1_1
-Start=30
-Len=1
-DataType=Numeric
-
-[ValueSet]
-Label=C.1.1.1 - Production en 2021
-Name=C1_1_1_VS1
-Value=1;Oui
-Value=2;Non
-
-[Item]
-Label=C.1.1.1 - Quantité Production en 2021
-Name=C1_1_1_QUANTITE
-Start=31
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Unité Production en 2021
-Name=C1_1_1_UNITE
-Start=39
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Prix de vente moyen unitaire Production en 2021
-Name=C1_1_1_PRIX
-Start=40
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Montant total des ventes Production en 2021
-Name=C1_1_1_MONTANT_TOTAL
-Start=46
-Len=12
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Quantité Production en 2022
-Name=QUANT_2022
-Start=58
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Unité Production en 2022
-Name=UNIT_2022
-Start=66
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Prix de vente moyen unitaire Production en 2022
-Name=PRIX_2022
-Start=67
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Montant total des ventes Production en 2022
-Name=MT_2022
-Start=73
-Len=9
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Quantité Production en 2023
-Name=QUANT_2023
-Start=82
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Unité Production en 2023
-Name=UNIT_2023
-Start=90
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Prix de vente moyen unitaire Production en 2023
-Name=PRIX_2023
-Start=91
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Montant total des ventes Production en 2023
-Name=MT_2023
-Start=97
-Len=9
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Quantité Cueilette en 2021
-Name=QUANT_20211
-Start=106
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Unité Cueillette en 2021
-Name=UNIT_20211
-Start=114
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Prix de vente moyen unitaire Cueillette en 2021
-Name=PRIX_20211
-Start=115
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Montant total des ventes Cueillette en 2021
-Name=MT_20211
-Start=121
-Len=9
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Quantité Cueillette en 2022
-Name=QUANT_20221
-Start=130
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Unité Cueillette en 2022
-Name=UNIT_20221
-Start=138
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Prix de vente moyen unitaire Cueillette en 2022
-Name=PRIX_20221
-Start=139
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Montant total des ventes Cueillette en 2022
-Name=MT_20221
-Start=145
-Len=9
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Quantité Cueillette en 2023
-Name=QUANT_20231
-Start=154
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Unité Cueillette en 2023
-Name=UNIT_20231
-Start=162
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Prix de vente moyen unitaire Cueillette en 2023
-Name=PRIX_20231
-Start=163
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.1.1 - Montant total des ventes Cueillette en 2023
-Name=MT_20231
-Start=169
-Len=9
-DataType=Numeric
+RecordLen=49
 
 [Item]
 Label=C.1.2 - A combien estimez-vous votre production d'anacarde en 2024 ?
-Name=C_1_2
-Start=178
+Name=C1_2
+Start=30
 Len=1
 DataType=Numeric
 
 [Item]
 Label=C.1.2.1 - Quantité en 2024
-Name=C_1_2_1
-Start=179
+Name=C1_2_1
+Start=31
 Len=9
 DataType=Numeric
 
 [Item]
 Label=C.1.2.2 - Unité en 2024
-Name=C_1_2_2
-Start=188
+Name=C1_2_2
+Start=40
 Len=1
 DataType=Numeric
+
+[ValueSet]
+Label=C.1.2.2 - Unité en 2024
+Name=C1_2_2_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
 
 [Item]
 Label=C.1.2.3 - Prix de vente en 2024
-Name=C_1_2_3
-Start=189
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.3 - Comment est utilisée votre production en 2021, 2022, et 2023 ?
-Name=C_1_3
-Start=195
-Len=1
-DataType=Numeric
-
-[ValueSet]
-Label=C.1.3 - Comment est utilisée votre production en 2021, 2022, et 2023 ?
-Name=C_1_3_VS1
-Value=1;Oui
-Value=2;Non
-
-[Item]
-Label=C.1.3.1 - Autoconsommation et don
-Name=C_1_3_1
-Start=196
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.3.1 -  Autoconsommation et don : Quantité
-Name=C_1_3_1_QUANT
-Start=197
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.3.1 - Autoconsommation et don : Unité
-Name=C_1_3_1_UNIT
-Start=203
-Len=1
-DataType=Numeric
-
-[Record]
-Label=utilisation de la production en 2021, 2022 et 2023?
-Name=SECTION_C_UTILISATION_PROD
-RecordTypeValue='5'
-MaxRecords=6
-RecordLen=110
-
-[Item]
-Label=Code
-Name=C1_3_CODE
-Start=30
-Len=1
-DataType=Numeric
-
-[Item]
-Label=Libellé production
-Name=C1_3
-Start=31
-Len=50
-DataType=Alpha
-
-[Item]
-Label=C.1.3.1 Existence en 2021
-Name=C1_3_1
-Start=81
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.3.1 Quantité en 2021
-Name=C1_3_1_QUNTITE
-Start=82
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.3.1 Unité Production en 2021
-Name=C1_3_1_UNITE
-Start=90
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.3.2 Existence en 2022
-Name=C1_3_2
-Start=91
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.3.2 Quantité en 2022
-Name=C1_3_2_QUNTITE
-Start=92
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.3.2 Unité Production en 2022
-Name=C1_3_2_UNITE
-Start=100
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.3.3 Existence en 2023
-Name=C1_3_3
-Start=101
-Len=1
-DataType=Numeric
-
-[Item]
-Label=C.1.3.3 Quantité en 2023
-Name=C1_3_3_QUNTITE
-Start=102
-Len=8
-DataType=Numeric
-
-[Item]
-Label=C.1.3.3 Unité Production en 2023
-Name=C1_3_3_UNITE
-Start=110
-Len=1
-DataType=Numeric
-
-[Record]
-Label=Production pomme de cajou ?
-Name=SECTIO_C_PROD_POMME_CAJOU
-RecordTypeValue='6'
-RecordLen=30
-
-[Item]
-Label=C.1.4 - Votre unité fait elle de la production de pomme de cajou ?
-Name=C_1_4
-Start=30
-Len=1
-DataType=Numeric
-
-[ValueSet]
-Label=C.1.4 - Votre unité fait elle de la production de pomme de cajou ?
-Name=C_1_4_VS1
-Value=1;Oui
-Value=2;Non
-
-[Record]
-Label=Production en quantité pomme de cajou ?
-Name=SECTION_C_QUANTITE
-RecordTypeValue='7'
-MaxRecords=3
-RecordLen=54
-
-[Item]
-Label=code
-Name=C1_5_CODE
-Start=30
-Len=1
-DataType=Numeric
-
-[Item]
-Label=Année
-Name=C1_5
-Start=31
-Len=4
-DataType=Numeric
-
-[Item]
-Label=C.1.5.1.1 - Quantité production ?
-Name=C1_5_1_1
-Start=35
-Len=6
-DataType=Numeric
-
-[Item]
-Label=C.1.5.1.2 - Unité de Production ?
-Name=C1_5_1_2
+Name=C1_2_3
 Start=41
-Len=2
-DataType=Numeric
-
-[Item]
-Label=C.1.5.1.3 - Destination Production ?
-Name=C1_5_1_3
-Start=43
-Len=2
-DataType=Numeric
-
-[ValueSet]
-Label=C.1.5.1.3 - Destination Production ?
-Name=C1_5_1_3_VS1
-Value=1;Secteur public ou parapublic
-Value=2;Entreprise privée (Pour la transformation)
-Value=3;Entreprise privée non commerciale
-Value=4;Ménage/particulier
-Value=5;Exportation directe
-Value=6;Autoconsommation
-Value=0;Stock
-
-[Item]
-Label=C.1.5.2.1 - Quantité Cueillette ?
-Name=C1_5_2_1
-Start=45
 Len=6
 DataType=Numeric
 
 [Item]
-Label=C.1.5.2.2 - Unité de Cueillette ?
-Name=C1_5_2_2
-Start=51
-Len=2
-DataType=Numeric
-
-[Item]
-Label=C.1.5.2.3 - Destination Cueillette ?
-Name=C1_5_2_3
-Start=53
-Len=2
+Label=C.1.4 - Votre unité fait elle de la production de pomme de cajou ?
+Name=C1_4
+Start=47
+Len=1
 DataType=Numeric
 
 [ValueSet]
-Label=C.1.5.2.3 - Destination Cueillette ?
-Name=C1_5_2_3_VS1
-Value=1;Secteur public ou parapublic
-Value=2;Entreprise privée (Pour la transformation)
-Value=3;Entreprise privée non commerciale
-Value=4;Ménage/particulier
-Value=5;Exportation directe
-Value=6;Autoconsommation
-Value=0;Stock
-
-[Record]
-Label=periode sans production d'anacarde
-Name=SECTION_C1_6
-RecordTypeValue='B'
-RecordLen=31
+Label=C.1.4 - Votre unité fait elle de la production de pomme de cajou ?
+Name=C1_4_VS1
+Value=1;Oui
+Value=2;Non
 
 [Item]
 Label=C.1.6 - Sur quelle période de l’année l’unité de production d’anacarde est sans activité ? (Cocher les mois sans activité)
 Name=C1_6
-Start=30
+Start=48
 Len=2
 DataType=Numeric
 
@@ -2704,6 +2261,362 @@ Value=9;Septembre
 Value=10;Octobre
 Value=11;Novembre
 Value=12;Décembre
+
+[Record]
+Label=Production d'anacarde
+Name=SECTION_C_PRODUCTION
+RecordTypeValue='2'
+MaxRecords=3
+RecordLen=62
+
+[Item]
+Label=C.1.1.1 - Code
+Name=C1_1_1_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.1.1.1 - Année
+Name=C1_1_1_ANNEE
+Start=31
+Len=4
+DataType=Numeric
+
+[Item]
+Label=C.1.1.1 - Production
+Name=C1_1_1_EXISTENCE
+Start=35
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.1.1 - Production
+Name=C1_1_1_EXISTENCE_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=C.1.1.1 - Quantité Production
+Name=C1_1_1_QUANTITE
+Start=36
+Len=8
+DataType=Numeric
+
+[Item]
+Label=C.1.1.1 - Unité Production
+Name=C1_1_1_UNITE
+Start=44
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.1.1 - Unité Production
+Name=C1_1_1_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=C.1.1.1 - Prix de vente moyen unitaire Production en FCFA
+Name=C1_1_1_PRIX
+Start=45
+Len=6
+DataType=Numeric
+
+[Item]
+Label=C.1.1.1 - Montant total des ventes Production
+Name=C1_1_1_MT
+Start=51
+Len=12
+DataType=Numeric
+
+[Record]
+Label=Cueillette d'anacarde
+Name=SECTION_C_CUEILLETTE
+RecordTypeValue='O'
+MaxRecords=3
+RecordLen=62
+
+[Item]
+Label=C.1.1.2 - Code
+Name=C1_1_2_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.1.1.2 - Année
+Name=C1_1_2_ANNEE
+Start=31
+Len=4
+DataType=Numeric
+
+[Item]
+Label=C.1.1.2 - Cueillette
+Name=C1_1_2_EXISTENCE
+Start=35
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.1.2 - Cueillette
+Name=C1_1_2_EXISTENCE_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=C.1.1.2 - Quantité cueillette
+Name=C1_1_2_QUANTITE
+Start=36
+Len=8
+DataType=Numeric
+
+[Item]
+Label=C.1.1.2 - Unité cueillette
+Name=C1_1_2_UNITE
+Start=44
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.1.2 - Unité cueillette
+Name=C1_1_2_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=C.1.1.2 - Prix de vente moyen unitaire de cueillette en FCFA
+Name=C1_1_2_PRIX
+Start=45
+Len=6
+DataType=Numeric
+
+[Item]
+Label=C.1.1.2 - Montant total des ventes de cueillette
+Name=C1_1_2_MT
+Start=51
+Len=12
+DataType=Numeric
+
+[Record]
+Label=utilisation de la production en 2021, 2022 et 2023?
+Name=SECTION_C_UTILISATION_PROD
+RecordTypeValue='5'
+MaxRecords=6
+RecordLen=85
+
+[Item]
+Label=Code
+Name=C1_3_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Libellé production
+Name=C1_3_LIBELLE
+Start=31
+Len=25
+DataType=Alpha
+
+[Item]
+Label=C.1.3.1 Existence en 2021
+Name=C1_3_1_EXISTENCE
+Start=56
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.1.3.1 Quantité en 2021
+Name=C1_3_1_QUANTITE
+Start=57
+Len=8
+DataType=Numeric
+
+[Item]
+Label=C.1.3.1 Unité Production en 2021
+Name=C1_3_1_UNITE
+Start=65
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.3.1 Unité Production en 2021
+Name=C1_3_1_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=C.1.3.2 Existence en 2022
+Name=C1_3_2_EXISTENCE
+Start=66
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.1.3.2 Quantité en 2022
+Name=C1_3_2_QUANTITE
+Start=67
+Len=8
+DataType=Numeric
+
+[Item]
+Label=C.1.3.2 Unité Production en 2022
+Name=C1_3_2_UNITE
+Start=75
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.3.2 Unité Production en 2022
+Name=C1_3_2_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=C.1.3.3 Existence en 2023
+Name=C1_3_3_EXISTENCE
+Start=76
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.1.3.3 Quantité en 2023
+Name=C1_3_3_QUANTITE
+Start=77
+Len=8
+DataType=Numeric
+
+[Item]
+Label=C.1.3.3 Unité Production en 2023
+Name=C1_3_3_UNITE
+Start=85
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.3.3 Unité Production en 2023
+Name=C1_3_3_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Record]
+Label=Production en quantité pomme de cajou ?
+Name=SECTION_C_QUANTITE
+RecordTypeValue='7'
+MaxRecords=3
+RecordLen=56
+
+[Item]
+Label=code
+Name=C1_5_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Année
+Name=C1_5_ANNEE
+Start=31
+Len=4
+DataType=Numeric
+
+[Item]
+Label=C.1.5.1 Existence de production
+Name=C1_5_1_EXISTENCE
+Start=35
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.1.5.1.1 - Quantité production
+Name=C1_5_1_QUANTITE
+Start=36
+Len=6
+DataType=Numeric
+
+[Item]
+Label=C.1.5.1.2 - Unité de Production
+Name=C1_5_1_UNITE
+Start=42
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.5.1.2 - Unité de Production
+Name=C1_5_1_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=C.1.5.1.3 - Destination Production
+Name=C1_5_1_DESTINATION
+Start=44
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.5.1.3 - Destination Production
+Name=C1_5_1_DESTINATION_VS1
+Value=0;Stock
+Value=1;Secteur public ou parapublic
+Value=2;Entreprise privée (Pour la transformation)
+Value=3;Entreprise privée non commerciale
+Value=4;Ménage/particulier
+Value=5;Exportation directe
+Value=6;Autoconsommation
+
+[Item]
+Label=C.1.5.2 Existence de cueillette
+Name=C1_5_2_EXISTENCE
+Start=46
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.1.5.2.1 - Quantité Cueillette
+Name=C1_5_2_QUANTITE
+Start=47
+Len=6
+DataType=Numeric
+
+[Item]
+Label=C.1.5.2.2 - Unité de Cueillette
+Name=C1_5_2_UNITE
+Start=53
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.5.2.2 - Unité de Cueillette
+Name=C1_5_2_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=C.1.5.2.3 - Destination Cueillette
+Name=C1_5_2_3_DESTINATION
+Start=55
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.5.2.3 - Destination Cueillette
+Name=C1_5_2_3_DESTINATION_VS1
+Value=1;Secteur public ou parapublic
+Value=2;Entreprise privée (Pour la transformation)
+Value=3;Entreprise privée non commerciale
+Value=4;Ménage/particulier
+Value=5;Exportation directe
+Value=6;Autoconsommation
+Value=0;Stock
 
 [Record]
 Label=UNITE DE TRANSFORMATION
@@ -2730,7 +2643,7 @@ Label=chiffre d'affaire
 Name=SOUS_SECTION_C2_CHIFFRE_D_AFFAIRE
 RecordTypeValue='9'
 MaxRecords=3
-RecordLen=55
+RecordLen=70
 
 [Item]
 Label=code
@@ -2750,21 +2663,21 @@ DataType=Numeric
 Label=C2.1.1.1 - Chiffre d'affaire de la transformation uniquement
 Name=C2_1_1_1
 Start=35
-Len=10
+Len=12
 DataType=Numeric
 
 [Item]
 Label=C2.1.1.2 - Chiffre d'affaire du service de transformation uniquement
 Name=C2_1_1_2
-Start=45
-Len=10
+Start=47
+Len=12
 DataType=Numeric
 
 [Item]
 Label=C2.1.1.3 - Chiffre d'affaire des deux à la fois
 Name=C2_1_1_3
-Start=55
-Len=1
+Start=59
+Len=12
 DataType=Numeric
 
 [Record]
@@ -2966,4 +2879,1632 @@ Label=C.2.4 - Unite
 Name=C2_4_UNITE
 Start=39
 Len=2
+DataType=Numeric
+
+[Record]
+Label=classement, résidus, periode service de transformation
+Name=SOUS_SECTION_C2_5_TRANSFORMATION
+RecordTypeValue='F'
+RecordLen=67
+
+[Item]
+Label=C.2.5.1 - Secteur public ou parapublic
+Name=C2_5_1
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.2.5.2 - Entreprise privée
+Name=C2_5_2
+Start=31
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.2.5.3 - Ménage/particulier
+Name=C2_5_3
+Start=32
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.2.5.4 - Etranger
+Name=C2_5_4
+Start=33
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.2.5.5 - Autres
+Name=C2_5_5
+Start=34
+Len=1
+DataType=Numeric
+
+[Item]
+Label=C.2.6 - Les résidus issus de la transformation sont-ils vendus ?
+Name=C2_6
+Start=35
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.2.6 - Les résidus issus de la transformation sont-ils vendus ?
+Name=C2_6_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=C.2.6.1 - Quel est le montant de ces ventes en 2021 (en FCFA)?
+Name=C2_6_1
+Start=36
+Len=10
+DataType=Numeric
+
+[Item]
+Label=C.2.6.2 - Quel est le montant de ces ventes en 2022 (en FCFA)?
+Name=C2_6_2
+Start=46
+Len=10
+DataType=Numeric
+
+[Item]
+Label=C.2.6.3 - Quel est le montant de ces ventes en 2023 (en FCFA)?
+Name=C2_6_3
+Start=56
+Len=10
+DataType=Numeric
+
+[Item]
+Label=C.1.7 - Sur quelle période de l’année l’unité de transformation d’anacarde reste sans activité ? (Cocher les mois sans activité)
+Name=C2_7
+Start=66
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=C.1.7 - Sur quelle période de l’année l’unité de transformation d’anacarde reste sans activité ? (Cocher les mois sans activité)
+Name=C2_7_VS1
+Value=1;Janvier
+Value=2;Février
+Value=3;Mars
+Value=4;Avril
+Value=5;Mai
+Value=6;Juin
+Value=7;Juillet
+Value=8;Août
+Value=9;Septembre
+Value=10;Octobre
+Value=11;Novembre
+Value=12;Décembre
+
+[Record]
+Label=UNITE DE COMMERCE
+Name=SOUS_SECTION_C3_COMMERCE
+RecordTypeValue='G'
+RecordLen=30
+
+[Item]
+Label=C.3.1 - Votre unité achète-t-elle de l'anacarde brut/Amande pour les revendre sans transformation ?
+Name=C3_1
+Start=30
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.3.1 - Votre unité achète-t-elle de l'anacarde brut/Amande pour les revendre sans transformation ?
+Name=C3_1_VS1
+Value=1;Anacarde brut uniquement
+Value=2;Amande uniquement
+Value=3;= Les deux à la fois
+
+[Record]
+Label=Pour chaque type en 2021, 2022 et 2023
+Name=C3_2_TYPE
+RecordTypeValue='H'
+MaxRecords=3
+RecordLen=78
+
+[Item]
+Label=code
+Name=CODE_C3_2
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Année
+Name=C3_2
+Start=31
+Len=4
+DataType=Numeric
+
+[Item]
+Label=C.3.2.1 – type de produit
+Name=C_3_2_1
+Start=35
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.3.2.1 – type de produit
+Name=C_3_2_1_VS1
+Value=1;Anacarde brut
+Value=2;Amande
+
+[Item]
+Label=C.3.2.2 - Quantité achetée
+Name=C3_2_2
+Start=36
+Len=8
+DataType=Numeric
+
+[Item]
+Label=C.3.2.3 - Unité
+Name=C3_2_3
+Start=44
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=C.3.2.3 - Unité
+Name=C3_2_3_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=C.3.2.4 - Prix unitaire d’achat (en FCFA/unité)
+Name=C3_2_4
+Start=46
+Len=5
+DataType=Numeric
+
+[Item]
+Label=C.3.2.5 - Montant total achat (en FCFA)
+Name=C3_2_5
+Start=51
+Len=10
+DataType=Numeric
+
+[Item]
+Label=C.3.2.6 - Origine Principale
+Name=C3_2_6
+Start=61
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.3.2.6 - Origine Principale
+Name=C3_2_6_VS1
+Value=1;Entreprise privée
+Value=2;Ménage / Particulier
+Value=3;Importation directe
+Value=9;Autre à préciser
+
+[Item]
+Label=C.3.2.7 - Principale Source de financement
+Name=C3_2_7
+Start=62
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.3.2.7 - Principale Source de financement
+Name=C3_2_7_VS1
+Value=1;Fonds propres
+Value=2;Don
+Value=3;Crédits fournisseurs
+Value=4;Emprunt
+Value=5;Tontine
+Value=9;Autre
+
+[Item]
+Label=C.3.2.8 - Prix unitaire de vente (en FCFA/unité)
+Name=C3_2_8
+Start=63
+Len=5
+DataType=Numeric
+
+[Item]
+Label=C.3.2.9 - Montant total vente (en FCFA)
+Name=C3_2_9
+Start=68
+Len=10
+DataType=Numeric
+
+[Item]
+Label=C.3.2.10 - Destination principale
+Name=C3_2_10
+Start=78
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=C.3.2.10 - Destination principale
+Name=C3_2_10_VS1
+Value=1;Secteur public ou parapublic
+Value=2;Entreprise privée commerciale
+Value=3;Entreprise privée non commerciale
+Value=4;Ménage/particulier
+Value=5;Exportation directe
+Value=0;Stock
+
+[Record]
+Label=Période sans commerce d'anacarde
+Name=C3_3_PERIODE
+RecordTypeValue='I'
+RecordLen=31
+
+[Item]
+Label=C.3.3 - Sur quelle période de l’année l’unité de commerce d’anacarde est sans activité ? (Cocher les mois sans activité)
+Name=C3_3
+Start=30
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=C.3.3 - Sur quelle période de l’année l’unité de commerce d’anacarde est sans activité ? (Cocher les mois sans activité)
+Name=C3_3_VS1
+Value=1;Janvier
+Value=2;Février
+Value=3;Mars
+Value=4;Avril
+Value=5;Mai
+Value=6;Juin
+Value=7;Juillet
+Value=8;Août
+Value=9;Septembre
+Value=10;Octobre
+Value=11;Novembre
+Value=12;Décembre
+
+[Record]
+Label=DEPENSES ET CHARGES
+Name=SECTION_D
+RecordTypeValue='J'
+MaxRecords=3
+RecordLen=59
+
+[Item]
+Label=Code
+Name=CODE_D1
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Année
+Name=D1_ANNEE
+Start=31
+Len=1
+DataType=Numeric
+
+[Item]
+Label=D.1.1 - Quantité
+Name=D1_1
+Start=32
+Len=8
+DataType=Numeric
+
+[Item]
+Label=D.1.2 - Unité
+Name=D1_2
+Start=40
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=D.1.2 - Unité
+Name=D1_2_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=D.1.3 - Prix unitaire (en FCFA)
+Name=D1_3
+Start=42
+Len=6
+DataType=Numeric
+
+[Item]
+Label=D.1.4 - Montant total achat annuel (en FCFA)
+Name=D1_4
+Start=48
+Len=10
+DataType=Numeric
+
+[Item]
+Label=D.1.5 - Origine
+Name=D1_5
+Start=58
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=D.1.5 - Origine
+Name=D1_5_VS1
+Value=1;Secteur public
+Value=2;Entreprise privée
+Value=3;Ménage / Particulier
+Value=4;Importation directe
+Value=5;UP elle-même
+Value=9;Autre à préciser
+
+[Item]
+Label=D.1.6 - Source de financement
+Name=D1_6
+Start=59
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=D.1.6 - Source de financement
+Name=D1_6_VS1
+Value=1;Fonds propres
+Value=2;Don
+Value=3;Crédits fournisseurs
+Value=4;Emprunt
+Value=5;Tontine
+Value=9;Autre
+
+[Record]
+Label=Charge d'exploitation
+Name=SOUS_SECTION_D2_CHARGE
+RecordTypeValue='K'
+MaxRecords=20
+RecordLen=96
+
+[Item]
+Label=Code
+Name=CODE_D2
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Libellé charge d'exploitation
+Name=D2
+Start=31
+Len=50
+DataType=Alpha
+
+[Item]
+Label=D.2.1 - Existance charge d'exploitation
+Name=D2_1
+Start=81
+Len=1
+DataType=Numeric
+
+[Item]
+Label=D.2.2 - Périodicité charge d'exploitation
+Name=D2_2
+Start=82
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=D.2.2 - Périodicité charge d'exploitation
+Name=D2_2_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Item]
+Label=D.2.3 - Nombre de période dans l'année
+Name=D2_3
+Start=83
+Len=2
+DataType=Numeric
+
+[Item]
+Label=D.2.4 - Montant charge d'exploitation
+Name=D2_4
+Start=85
+Len=10
+DataType=Numeric
+
+[Item]
+Label=D.2.5 - Origine charge d'exploitation
+Name=D2_5
+Start=95
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=D.2.5 - Origine charge d'exploitation
+Name=D2_5_VS1
+Value=1;Secteur public
+Value=2;Entreprise privée
+Value=3;Ménage / Particulier
+Value=4;Importation directe
+Value=5;UP elle-même
+Value=9;Autre à préciser
+
+[Item]
+Label=D.2.6 - Activité concernée charge d'exploitation
+Name=D2_6
+Start=96
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=D.2.6 - Activité concernée charge d'exploitation
+Name=D2_6_VS1
+Value=1;Production
+Value=2;Transformation
+Value=3;Commerce
+Value=4;Production et transformation
+Value=5;Production et commerce
+Value=6;Transformation et commerce
+Value=7;Les trois à la fois
+
+[Record]
+Label=IMMOBILISATION
+Name=SECTION_E
+RecordTypeValue='L'
+MaxRecords=25
+RecordLen=97
+
+[Item]
+Label=Code
+Name=CODE_E1
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Type d'immobilisation
+Name=E1
+Start=31
+Len=50
+DataType=Alpha
+
+[Item]
+Label=E.1.1 - Nombre
+Name=E1_1
+Start=81
+Len=3
+DataType=Numeric
+
+[Item]
+Label=E.1.2 - Valeur d'acquisition (en FCFA)
+Name=E1_2
+Start=84
+Len=10
+DataType=Numeric
+
+[Item]
+Label=E.1.3 - Année d'acquisition (selon le nombre)
+Name=E1_3
+Start=94
+Len=4
+DataType=Numeric
+
+[Record]
+Label=vergers d'anacardiers
+Name=SOUS_SECTION_E2
+RecordTypeValue='M'
+MaxRecords=3
+RecordLen=105
+
+[Item]
+Label=Code
+Name=CODE_E2
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Numéro
+Name=E2_NUMERO
+Start=31
+Len=1
+DataType=Numeric
+
+[Item]
+Label=E.2.1 - Parcelle (Commune d'emplacement de la Parcelle)
+Name=E2_1
+Start=32
+Len=50
+DataType=Alpha
+
+[Item]
+Label=E.2.2 - Superficie
+Name=E2_2
+Start=82
+Len=4
+DataType=Numeric
+
+[Item]
+Label=E.2.3 - Unité
+Name=E2_3
+Start=86
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=E.2.3 - Unité
+Name=E2_3_VS1
+Value=1;Mètre carré
+Value=2;Hectare
+
+[Item]
+Label=E.2.4 - Nombre de pieds
+Name=E2_4
+Start=87
+Len=4
+DataType=Numeric
+
+[Item]
+Label=E.2.5 - Mode d'acquisition
+Name=E2_5
+Start=91
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=E.2.5 - Mode d'acquisition
+Name=E2_5_VS1
+Value=1;Achat
+Value=2;Héritage/Don
+Value=3;Location
+Value=4;Prêt
+
+[Item]
+Label=E.2.6 - Valeur d'acquisition (en FCFA)
+Name=E2_6
+Start=92
+Len=10
+DataType=Numeric
+
+[Item]
+Label=E.2.7 - Année d'acquisition
+Name=E2_7
+Start=102
+Len=4
+DataType=Numeric
+
+[Record]
+Label=Nombre de pieds d'anacardiers
+Name=SOUS_SECTION_E3
+RecordTypeValue='N'
+RecordLen=40
+
+[Item]
+Label=E.1.4 - Nombre de pieds d'anacardiers
+Name=E1_4
+Start=30
+Len=4
+DataType=Numeric
+
+[Item]
+Label=E.1.5 - Valeurs d'acquisition moyenne par pieds
+Name=E1_5
+Start=34
+Len=7
+DataType=Numeric
+
+[Record]
+Label=MAIN D'OEUVRE EMPLOYEE
+Name=SECTION_F
+RecordTypeValue='6'
+RecordLen=31
+
+[Item]
+Label=F.2 - Rémunérez-vous le personnel selon la catégorie, en Espèce ?
+Name=F2_1
+Start=30
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=F.2 - Rémunérez-vous le personnel selon la catégorie, en Espèce ?
+Name=F2_1_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=F.2 - Rémunérez-vous le personnel selon la catégorie, En nature ?
+Name=F2_2
+Start=31
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=F.2 - Rémunérez-vous le personnel selon la catégorie, En nature ?
+Name=F2_2_VS1
+Value=1;Oui
+Value=2;Non
+
+[Record]
+Label=Effectif main d'oeuvre
+Name=SOUS_SECTION_F1
+RecordTypeValue='B'
+MaxRecords=7
+RecordLen=92
+
+[Item]
+Label=Code
+Name=CODE_F1
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Catégorie
+Name=F1
+Start=31
+Len=50
+DataType=Alpha
+
+[Item]
+Label=F.1.1 - Nombre 
+Name=F1_1
+Start=81
+Len=4
+DataType=Numeric
+
+[Item]
+Label=F.1.1.1 - Homme
+Name=F1_1_1
+Start=85
+Len=4
+DataType=Numeric
+
+[Item]
+Label=F.1.1.2 - Femme
+Name=F2_1_2
+Start=89
+Len=4
+DataType=Numeric
+
+[Record]
+Label=rémunération en espèce
+Name=SOUS_SECTION_F3
+RecordTypeValue='P'
+MaxRecords=3
+RecordLen=95
+
+[Item]
+Label=Code
+Name=F3_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Année
+Name=F3
+Start=31
+Len=4
+DataType=Numeric
+
+[Item]
+Label=F.3.1 - Nombre salarié permanent 
+Name=F3_1_NOMBRE
+Start=35
+Len=6
+DataType=Numeric
+
+[Item]
+Label=F.3.1 - Montant salarié permanent
+Name=F3_1_MONTANT
+Start=41
+Len=10
+DataType=Numeric
+
+[Item]
+Label=F.3.1 - Périodicité salarié permanent
+Name=F3_1_PERIODE
+Start=51
+Len=10
+DataType=Numeric
+
+[ValueSet]
+Label=F.3.1 - Périodicité salarié permanent
+Name=F3_1_PERIODE_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Item]
+Label=F.3.2 - Nombre salarié temporaire
+Name=F3_2_NOMBRE
+Start=61
+Len=6
+DataType=Numeric
+
+[Item]
+Label=F.3.2 - Montant salarié temporaire
+Name=F3_2_MONTANT
+Start=67
+Len=10
+DataType=Numeric
+
+[Item]
+Label=F.3.2 - Périodicité salarié temporaire
+Name=F3_2_PERIODE
+Start=77
+Len=10
+DataType=Numeric
+
+[ValueSet]
+Label=F.3.2 - Périodicité salarié temporaire
+Name=F3_2_PERIODE_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Item]
+Label=F.3.3 - Total salaire versé
+Name=F3_3_TS
+Start=87
+Len=9
+DataType=Numeric
+
+[Record]
+Label=rémunération en nature
+Name=SOUS_SECTION_F4
+RecordTypeValue='Q'
+MaxRecords=3
+RecordLen=97
+
+[Item]
+Label=Code
+Name=F3_CODE1
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Année
+Name=F4
+Start=31
+Len=4
+DataType=Numeric
+
+[Item]
+Label=F.4.1 - Nombre salarié permanent
+Name=F4_1_NOMBRE
+Start=35
+Len=6
+DataType=Numeric
+
+[Item]
+Label=F.4.1 - Quantité salarié permanent
+Name=F4_1_QUANTITE
+Start=41
+Len=10
+DataType=Numeric
+
+[Item]
+Label=F4.1 - Unité salarié permanent
+Name=F4_1_UNITE
+Start=51
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=F4.1 - Unité salarié permanent
+Name=F4_1_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=F.4.1 - Périodicité salarié permanent
+Name=F4_1_PERIODE
+Start=52
+Len=10
+DataType=Numeric
+
+[ValueSet]
+Label=F.4.1 - Périodicité salarié permanent
+Name=F4_1_PERIODE_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Item]
+Label=F.4.2 - Nombre salarié temporaire
+Name=F4_2_NOMBRE
+Start=62
+Len=6
+DataType=Numeric
+
+[Item]
+Label=F.4.2 - Quantité salarié temporaire
+Name=F4_2_QUANTITE
+Start=68
+Len=10
+DataType=Numeric
+
+[Item]
+Label=F.4.2 - Unité salaire temporaire
+Name=F4_2_UNITE
+Start=78
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=F.4.2 - Unité salaire temporaire
+Name=F4_2_UNITE_VS1
+Value=1;Gramme
+Value=2;Kg
+Value=3;Tonne
+
+[Item]
+Label=F.4.2 - Périodicité salarié temporaire
+Name=F4_2_PERIODE
+Start=79
+Len=10
+DataType=Numeric
+
+[ValueSet]
+Label=F.4.2 - Périodicité salarié temporaire
+Name=F4_2_PERIODE_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Item]
+Label=F.4.3 - Total salaire versé
+Name=F4_3_TS
+Start=89
+Len=9
+DataType=Numeric
+
+[Record]
+Label=montant des cotisations
+Name=SOUS_SECTION_F6
+RecordTypeValue='R'
+MaxRecords=3
+RecordLen=113
+
+[Item]
+Label=Code
+Name=F6_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Catégorie
+Name=F6
+Start=31
+Len=50
+DataType=Alpha
+
+[Item]
+Label=F.6.1 - Nombre en 2021
+Name=F6_1
+Start=81
+Len=1
+DataType=Numeric
+
+[Item]
+Label=F.6.2 - Montant en 2021
+Name=F6_2
+Start=82
+Len=8
+DataType=Numeric
+
+[Item]
+Label=F.6.3 - Nombre en 2022
+Name=F6_3
+Start=90
+Len=4
+DataType=Numeric
+
+[Item]
+Label=F.6.4 - Montant en 2022
+Name=F6_4
+Start=94
+Len=8
+DataType=Numeric
+
+[Item]
+Label=F.6.5 - Nombre en 2023
+Name=F6_5
+Start=102
+Len=4
+DataType=Numeric
+
+[Item]
+Label=F.6.6 - Montant en 2023
+Name=F6_6
+Start=106
+Len=8
+DataType=Numeric
+
+[Record]
+Label=FINANCEMENTS - IMPÔTS
+Name=SECTION_G
+RecordTypeValue='S'
+RecordLen=141
+
+[Item]
+Label=G.2 - Votre structure paye-t-elle des impôts ?
+Name=G2
+Start=30
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=G.2 - Votre structure paye-t-elle des impôts ?
+Name=G2_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=G.2.1.1 - Taxe municipale en 2021
+Name=G2_1_1_2021
+Start=31
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.2. Taxe sur le foncier en 2021
+Name=G2_1_2_2021
+Start=43
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.3 - Autres Taxes………….
+Name=G2_1_3_2021
+Start=55
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.1 - Taxe municipale en 2022
+Name=G2_1_1_2022
+Start=67
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.2. Taxe sur le foncier en 2022
+Name=G2_1_2_2022
+Start=79
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.3 - Autres Taxes………….
+Name=G2_1_3_2022
+Start=91
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.1 - Taxe municipale en 2021
+Name=G2_1_1_2023
+Start=103
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.2. Taxe sur le foncier en 2021
+Name=G2_1_2_2023
+Start=115
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.3 - Autres Taxes………….
+Name=G2_1_3_2023
+Start=127
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.2.1.4 - Périodicité taxe municipale
+Name=G2_1_4_PERIODE
+Start=139
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=G.2.1.4 - Périodicité taxe municipale
+Name=G2_1_4_PERIODE_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Item]
+Label=G.2.1.5 - Périodicité taxe sur foncier
+Name=G2_1_5_PERIODE
+Start=140
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=G.2.1.5 - Périodicité taxe sur foncier
+Name=G2_1_5_PERIODE_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Item]
+Label=G.2.1.6 - Périodicité autres taxes
+Name=G2_1_6_PERIODE
+Start=141
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=G.2.1.6 - Périodicité autres taxes
+Name=G2_1_6_PERIODE_VS1
+Value=1;Mois
+Value=2;Bimestre
+Value=3;Trimestre
+Value=4;Semestre
+Value=5;Année
+
+[Record]
+Label=sources financement
+Name=SOUS_SECTION_G1
+RecordTypeValue='T'
+MaxRecords=3
+RecordLen=154
+
+[Item]
+Label=Code
+Name=G1_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=G.1 - Année
+Name=G1
+Start=31
+Len=4
+DataType=Numeric
+
+[Item]
+Label=G.1.1 - Prêt bancaire
+Name=G1_1
+Start=35
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.2 - Micro crédit
+Name=G1_2
+Start=47
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.3 - Fonds propre
+Name=G1_3
+Start=59
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.4 - Prêt familial
+Name=G1_4
+Start=71
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.5 - Prêt auprès des structures d’encadrement étatique (DER, ADEPME….)
+Name=G1_5
+Start=83
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.6 - Dons
+Name=G1_6
+Start=95
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.7 - Subventions
+Name=G1_7
+Start=107
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.8 - Prêt clients
+Name=G1_8
+Start=119
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.9 - Prêt fournisseurs
+Name=G1_9
+Start=131
+Len=12
+DataType=Numeric
+
+[Item]
+Label=G.1.10 - Autres à préciser………
+Name=G1_10
+Start=143
+Len=12
+DataType=Numeric
+
+[Record]
+Label=DIFFICULTES RENCONTREES DANS L'ACTIVITE
+Name=SECTION_H
+RecordTypeValue='U'
+RecordLen=45
+
+[Item]
+Label=H.1.1 - Ecoulement de votre production à cause du manque de clientèle
+Name=H1_1
+Start=30
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.1 - Ecoulement de votre production à cause du manque de clientèle
+Name=H1_1_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.2 - Ecoulement de votre production à cause du nombre élevé de concurrents
+Name=H1_2
+Start=31
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.2 - Ecoulement de votre production à cause du nombre élevé de concurrents
+Name=H1_2_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.3 - Exportation de votre production
+Name=H1_3
+Start=32
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.3 - Exportation de votre production
+Name=H1_3_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.4 - Accès au crédit Banque/SFD
+Name=H1_4
+Start=33
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.4 - Accès au crédit Banque/SFD
+Name=H1_4_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.5 - Recrutement de personnel qualifié
+Name=H1_5
+Start=34
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.5 - Recrutement de personnel qualifié
+Name=H1_5_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.6 - Taxes et impôts trop élevés
+Name=H1_6
+Start=35
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.6 - Taxes et impôts trop élevés
+Name=H1_6_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.7 - Accompagnement pour la recherche de marché
+Name=H1_7
+Start=36
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.7 - Accompagnement pour la recherche de marché
+Name=H1_7_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.8 - Accès aux sites de cueillette
+Name=H1_8
+Start=37
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.8 - Accès aux sites de cueillette
+Name=H1_8_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.9 - Stockage des produits
+Name=H1_9
+Start=38
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.9 - Stockage des produits
+Name=H1_9_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.10 - Machines et d'équipements adaptés
+Name=H1_10
+Start=39
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.10 - Machines et d'équipements adaptés
+Name=H1_10_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.11 - Problèmes techniques de fabrication
+Name=H1_11
+Start=40
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.11 - Problèmes techniques de fabrication
+Name=H1_11_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.12 - Accès aux matières premières
+Name=H1_12
+Start=41
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.12 - Accès aux matières premières
+Name=H1_12_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.13 - Accès au foncier
+Name=H1_13
+Start=42
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.13 - Accès au foncier
+Name=H1_13_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.14 - Manque de local adapté (pour les unités de transformation)
+Name=H1_14
+Start=43
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.14 - Manque de local adapté (pour les unités de transformation)
+Name=H1_14_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.15 - Transport
+Name=H1_15
+Start=44
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.15 - Transport
+Name=H1_15_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Item]
+Label=H.1.16 - Autre à préciser………………………………….
+Name=H1_16
+Start=45
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=H.1.16 - Autre à préciser………………………………….
+Name=H1_16_VS1
+Value=1;Oui beaucoup de difficultés
+Value=2;Oui un peu de difficultés
+Value=3;Non
+
+[Record]
+Label=ENVIRONNEMENT
+Name=SECTION_I
+RecordTypeValue='V'
+RecordLen=91
+
+[Item]
+Label=I.1.1 - Déboisement
+Name=I1_1
+Start=30
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.1.1 - Déboisement
+Name=I1_1_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.1.2 - Pollution de l’air
+Name=I1_2
+Start=31
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.1.2 - Pollution de l’air
+Name=I1_2_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.1.3 - Pollution de l’eau
+Name=I1_3
+Start=32
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.1.3 - Pollution de l’eau
+Name=I1_3_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.1.4 - Disparition des espèces animales
+Name=I1_4
+Start=33
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.1.4 - Disparition des espèces animales
+Name=I1_4_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.1.5 - Erosion du sol
+Name=I1_5
+Start=34
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.1.5 - Erosion du sol
+Name=I1_5_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.1.6 - Réchauffement climatique
+Name=I1_6
+Start=35
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.1.6 - Réchauffement climatique
+Name=I1_6_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.1.7 - Contamination du sol
+Name=I1_7
+Start=36
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.1.7 - Contamination du sol
+Name=I1_7_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.2 - Dans quelle mesure, pensez-vous que votre activité affecte la qualité de l&#39;air dans votre région ?
+Name=I2
+Start=37
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.2 - Dans quelle mesure, pensez-vous que votre activité affecte la qualité de l&#39;air dans votre région ?
+Name=I2_VS1
+Value=1;Faiblement
+Value=2;Modérément
+Value=3;Fortement
+
+[Item]
+Label=I.3 - Quelle est la principale destination des déchets issus de vos activités de transformation ?
+Name=I3
+Start=38
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.3 - Quelle est la principale destination des déchets issus de vos activités de transformation ?
+Name=I3_VS1
+Value=1;Vente
+Value=2;Jet dans la nature
+Value=3;recyclage
+
+[Item]
+Label=I.4 - Êtes-vous conscient des programmes ou initiatives visant à réduire l&#39;empreinte environnementale de votre activité dans votre région ?
+Name=I4
+Start=39
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=I.4 - Êtes-vous conscient des programmes ou initiatives visant à réduire l&#39;empreinte environnementale de votre activité dans votre région ?
+Name=I4_VS1
+Value=1;Oui
+Value=2;Non
+
+[Item]
+Label=I.5 - Quels types d'énergie sont utilisés pour alimenter les installations de transformation de l'anacarde ?
+Name=I5
+Start=40
+Len=2
+DataType=Numeric
+
+[ValueSet]
+Label=I.5 - Quels types d'énergie sont utilisés pour alimenter les installations de transformation de l'anacarde ?
+Name=I5_VS1
+Value=1;Énergie électrique provenant du réseau
+Value=2;Générateurs diesel
+Value=3;Énergies renouvelables (solaire, éolienne, etc.)
+Value=99;Autre (veuillez spécifier)
+
+[Item]
+Label=I.6 - Autres à préciser
+Name=I6
+Start=42
+Len=50
+DataType=Alpha
+
+[Record]
+Label=AUTRES ACTIVITES MENEES
+Name=SECTION_J
+RecordTypeValue='W'
+RecordLen=30
+
+[Item]
+Label=J.1 Votre structure mène-t-elle des activités autres que celles portant sur la filière anacarde ?
+Name=J1
+Start=30
+Len=1
+DataType=Numeric
+
+[ValueSet]
+Label=J.1 Votre structure mène-t-elle des activités autres que celles portant sur la filière anacarde ?
+Name=J1_VS1
+Value=1;Oui
+Value=2;Non
+
+[Record]
+Label=chiffre d'affaire autres activités
+Name=SOUS_SECTION_J
+RecordTypeValue='X'
+MaxRecords=5
+RecordLen=65
+
+[Item]
+Label=Code
+Name=J1_CODE
+Start=30
+Len=1
+DataType=Numeric
+
+[Item]
+Label=Libellé de l'activité
+Name=J1_0
+Start=31
+Len=1
+DataType=Numeric
+
+[Item]
+Label=J.1.1 - Code branche d'activité NAEMAS
+Name=J1_1
+Start=32
+Len=4
+DataType=Numeric
+
+[Item]
+Label=J.1.2 - Chiffre d’affaires 2021
+Name=J1_2
+Start=36
+Len=10
+DataType=Numeric
+
+[Item]
+Label=J.1.3 - Chiffre d’affaires 2022
+Name=J1_3
+Start=46
+Len=10
+DataType=Numeric
+
+[Item]
+Label=J.1.4 - Chiffre d’affaires 2023
+Name=J1_4
+Start=56
+Len=10
 DataType=Numeric
